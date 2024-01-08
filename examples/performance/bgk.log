@@ -1,0 +1,6 @@
+INFO:root:Established connection to database
+INFO:root:In Routine -> perfmap_series ...
+INFO:root:Returning the tuples: res = {namedtuple: {nProcs: [(x,y)]}}
+INFO:root:Checking for WEAK and STRONG scaling and efficicency ...
+INFO:root:Done checking
+INFO:root:Finished

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gleaner"
+description = "Helper tools to create plots from APES data."
+readme = "README.md"
+license = "BSD-2-Clause"
+version = "2025.4.2"
+dependencies = [ "numpy" ]
+maintainers = [
+  { name = "Harald Klimach", email = "harald.klimach@dlr.de"}
+]
+
+[tool.setuptools]
+py-modules = ["gleaner"]

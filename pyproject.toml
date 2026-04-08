@@ -8,7 +8,7 @@ description = "Helper tools to create plots from APES data."
 readme = "README.md"
 license = { text = "BSD-2-Clause" }
 version = "2025.4.2"
-dependencies = [ "numpy" ]
+dependencies = [ "numpy", "pandas" ]
 maintainers = [
   { name = "Harald Klimach", email = "harald.klimach@dlr.de"}
 ]

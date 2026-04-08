@@ -37,6 +37,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import sys
 import logging
 import re
+from pathlib import Path
 
 def first_word_of(string):
   ''' (string) -> string
@@ -333,6 +334,34 @@ def get_timing_header(filename):
       unified.append("{0}_{1:d}".format(cname, dups[cname]))
 
   return unified
+
+
+def load_timing_dataframe(filename):
+  """ (string or pathlib.Path) -> pandas.DataFrame
+      Read timing data into a pandas DataFrame using the extracted header.
+  """
+
+  import pandas as pd
+
+  filename = Path(filename)
+  header_names = get_timing_header(filename)
+
+  df = pd.read_csv(
+      filename,
+      sep=r'\s+',
+      engine='python',
+      comment='#',
+      header=None
+  )
+
+  if df.shape[1] != len(header_names):
+    raise ValueError(
+        'Header/data column mismatch in {0}: {1} headers, {2} data columns'
+        .format(filename, len(header_names), df.shape[1])
+    )
+
+  df.columns = header_names
+  return df
 
 
 def timing_to_db(fname, dbname, tabname):
